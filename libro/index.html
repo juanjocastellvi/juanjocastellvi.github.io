@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revenue Management Hotelero · Libro de Juanjo Castellvi</title>
+  <meta name="description" content="Manual práctico de Revenue Management Hotelero: 18 módulos para aprender a fijar precios, medir y decidir con datos. Próximamente en Amazon (Kindle y tapa blanda)." />
+  <link rel="canonical" href="https://juanjocastellvi.com/libro/" />
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="Revenue Management Hotelero · Del primer KPI a la dirección de ingresos" />
+  <meta property="og:description" content="Manual práctico de Revenue Management Hotelero: 18 módulos para aprender a fijar precios, medir y decidir con datos. Próximamente en Amazon (Kindle y tapa blanda)." />
+  <meta property="og:url" content="https://juanjocastellvi.com/libro/" />
+  <meta property="og:image" content="https://juanjocastellvi.com/libro/portada.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"Revenue Management Hotelero","alternativeHeadline":"Del primer KPI a la dirección de ingresos","author":{"@type":"Person","name":"Juan José de Castellvi Rey"},"inLanguage":"es","image":"https://juanjocastellvi.com/libro/portada.jpg","url":"https://juanjocastellvi.com/libro/","description":"Manual práctico de Revenue Management Hotelero: 18 módulos para aprender a fijar precios, medir y decidir con datos. Próximamente en Amazon (Kindle y tapa blanda)."}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; background-color: #0d0f14; }
+
+    body {
+      background-color: #0d0f14;
+      color: #e2ddd4;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background-color: #0d0f14;
+      border-bottom: 1px solid #252a38;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .logo span { color: #d4a843; }
+
+    nav { display: flex; align-items: center; gap: 2.2rem; }
+    nav a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #a0a8c0;
+      text-decoration: none;
+    }
+    nav a:hover { color: #ffffff; }
+    .nav-cta {
+      background-color: #d4a843 !important;
+      color: #0d0f14 !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background-color: #e8c05a !important; }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background-color: #ffffff; }
+
+    /* HERO */
+    .hero {
+      background-color: #0d0f14;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 2.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; top: 20%; right: 0;
+      width: 55%; height: 70%;
+      background: radial-gradient(ellipse at center, rgba(212,168,67,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 1100px; margin: 0 auto; width: 100%; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: rgba(212,168,67,0.12);
+      border: 1px solid rgba(212,168,67,0.3);
+      color: #e8c05a;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background-color: #d4a843;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #ffffff;
+      max-width: 760px;
+      margin-bottom: 1.6rem;
+    }
+    h1 em { font-style: normal; color: #d4a843; }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #b0b8cc;
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 2.8rem;
+    }
+
+    .hero-btns { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background-color: #d4a843;
+      color: #0d0f14;
+      font-weight: 700; font-size: 0.9rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 7px;
+      text-decoration: none;
+    }
+    .btn-gold:hover { background-color: #e8c05a; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background-color: transparent;
+      color: #e2ddd4;
+      font-weight: 500; font-size: 0.9rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 7px;
+      border: 1px solid #353a4e;
+      text-decoration: none;
+    }
+    .btn-outline:hover { border-color: #d4a843; color: #d4a843; }
+
+    /* STATS */
+    .stats-strip { background-color: #111319; border-top: 1px solid #252a38; border-bottom: 1px solid #252a38; }
+    .stats-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat-item { padding: 2.2rem 1rem; text-align: center; border-right: 1px solid #252a38; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: #e8c05a; line-height: 1; margin-bottom: 0.4rem; }
+    .stat-lbl { font-size: 0.74rem; color: #a0a8c0; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
+
+    /* LAYOUT */
+    .sw { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+
+    .sec-label {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: #e8c05a; margin-bottom: 0.9rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+      font-weight: 700; line-height: 1.15;
+      color: #ffffff;
+    }
+
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.22rem; font-weight: 700;
+      color: #ffffff; margin-bottom: 0.55rem; line-height: 1.3;
+    }
+
+    /* PROBLEMA */
+    .problem-sec { background-color: #0d0f14; padding: 6rem 0; }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center; }
+
+    .problem-text p { color: #b0b8cc; margin-bottom: 1.1rem; font-size: 0.97rem; }
+    .problem-text p strong { color: #e2ddd4; font-weight: 600; }
+
+    .callout {
+      background-color: rgba(212,168,67,0.08);
+      border: 1px solid rgba(212,168,67,0.2);
+      border-left: 3px solid #d4a843;
+      border-radius: 7px;
+      padding: 1.5rem 1.8rem;
+      margin-top: 1.8rem;
+    }
+    .callout p { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: #e2ddd4; font-style: italic; line-height: 1.6; margin: 0; }
+    .callout p strong { color: #e8c05a; font-style: normal; }
+
+    .problem-box { background-color: #111319; border: 1px solid #252a38; border-radius: 10px; padding: 2.2rem; }
+    .box-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #a0a8c0; margin-bottom: 1.2rem; }
+
+    .loss-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid #252a38; }
+    .loss-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .loss-ico { width: 36px; height: 36px; border-radius: 8px; background-color: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.2); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .loss-strong { display: block; color: #ffffff; font-weight: 600; font-size: 0.88rem; margin-bottom: 0.12rem; }
+    .loss-desc { color: #a0a8c0; font-size: 0.8rem; }
+
+    /* SERVICIOS */
+    .services-sec { background-color: #111319; border-top: 1px solid #252a38; border-bottom: 1px solid #252a38; padding: 6rem 0; }
+    .svc-header { text-align: center; margin-bottom: 3.5rem; }
+    .svc-header p { color: #b0b8cc; max-width: 500px; margin: 0.8rem auto 0; }
+
+    .svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background-color: #252a38; border: 1px solid #252a38; border-radius: 10px; overflow: hidden; }
+    .svc-card { background-color: #111319; padding: 2.6rem; }
+    .svc-card:hover { background-color: #161b27; }
+    .svc-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: rgba(212,168,67,0.22); line-height: 1; margin-bottom: 1.1rem; }
+    .svc-desc { color: #b0b8cc; font-size: 0.88rem; margin-bottom: 1.1rem; }
+    .svc-list { list-style: none; }
+    .svc-list li { display: flex; align-items: flex-start; gap: 0.55rem; color: #b0b8cc; font-size: 0.85rem; padding: 0.3rem 0; }
+    .svc-list li::before { content: '✓'; color: #d4a843; font-weight: 700; flex-shrink: 0; }
+    .svc-result { margin-top: 1.5rem; padding: 0.7rem 1.1rem; background-color: rgba(212,168,67,0.07); border-radius: 6px; font-size: 0.8rem; color: #e8c05a; font-weight: 600; }
+    .svc-result span { color: #a0a8c0; font-weight: 400; }
+
+    /* PROCESO */
+    .process-sec { background-color: #0d0f14; padding: 6rem 0; }
+    .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+    .steps { margin-top: 2.2rem; }
+    .step { display: flex; gap: 1.4rem; padding: 1.6rem 0; border-bottom: 1px solid #252a38; }
+    .step:last-child { border-bottom: none; }
+    .step-n { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #d4a843; flex-shrink: 0; padding-top: 0.1rem; width: 28px; }
+    .step strong { display: block; color: #ffffff; font-weight: 600; margin-bottom: 0.25rem; font-size: 0.95rem; }
+    .step p { color: #b0b8cc; font-size: 0.85rem; }
+
+    .why-box { background-color: #111319; border: 1px solid #252a38; border-radius: 10px; padding: 2.6rem; position: sticky; top: 5.5rem; }
+    .why-box h3 { margin-bottom: 1.6rem; }
+    .diff { padding: 1.3rem 0; border-bottom: 1px solid #252a38; }
+    .diff:last-of-type { border-bottom: none; }
+    .diff strong { display: block; color: #ffffff; font-weight: 600; font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .diff p { color: #b0b8cc; font-size: 0.83rem; }
+
+    /* SOBRE MÍ */
+    .about-sec { background-color: #111319; border-top: 1px solid #252a38; border-bottom: 1px solid #252a38; padding: 6rem 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.7fr; gap: 4.5rem; align-items: center; }
+
+    .avatar-wrap { position: relative; }
+    .avatar-box { width: 100%; aspect-ratio: 4/5; background-color: #1c2030; border: 1px solid #252a38; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .avatar-initials { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: rgba(212,168,67,0.3); user-select: none; }
+    .avatar-tag { position: absolute; bottom: -1rem; right: -1rem; background-color: #d4a843; color: #0d0f14; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1rem; border-radius: 7px; }
+
+    .about-text p { color: #b0b8cc; margin-bottom: 1.1rem; font-size: 0.97rem; }
+    .about-text p strong { color: #e2ddd4; font-weight: 600; }
+
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background-color: #252a38; border: 1px solid #252a38; border-radius: 9px; overflow: hidden; margin-top: 2rem; }
+    .pillar { background-color: #111319; padding: 1.3rem 1.4rem; }
+    .pillar strong { display: block; color: #ffffff; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .pillar span { color: #a0a8c0; font-size: 0.77rem; }
+
+    /* CTA */
+    /* CTA + FORMULARIO */
+    .cta-sec { background-color: #0d0f14; padding: 6rem 0; text-align: left; }
+    .cta-sec h2 { max-width: 100%; margin: 0.8rem 0 1.3rem; }
+    .cta-sec .sub { color: #b0b8cc; margin: 0 0 3rem; max-width: 620px; }
+
+    .contact-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 4rem; align-items: start; }
+
+    .contact-form-wrap form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.75rem; font-weight: 700; color: #a0a8c0; text-transform: uppercase; letter-spacing: 0.1em; }
+    .form-group input,
+    .form-group textarea {
+      background-color: #111319;
+      border: 1px solid #252a38;
+      border-radius: 7px;
+      padding: 0.8rem 1rem;
+      color: #ffffff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #404560; }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: #d4a843; }
+    .btn-submit {
+      background-color: #d4a843; color: #0d0f14; font-weight: 700; font-size: 0.95rem;
+      padding: 0.9rem 2rem; border: none; border-radius: 7px; cursor: pointer;
+      align-self: flex-start; font-family: 'DM Sans', sans-serif;
+      transition: background-color 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background-color: #e8c05a; transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .contact-info { background-color: #111319; border: 1px solid #252a38; border-radius: 10px; padding: 2.2rem; display: flex; flex-direction: column; }
+    .contact-info-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid #252a38; }
+    .contact-info-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-info-icon { font-size: 1.1rem; flex-shrink: 0; width: 28px; text-align: center; padding-top: 0.15rem; }
+    .contact-info strong { display: block; color: #ffffff; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+    .contact-info a, .contact-info span { color: #b0b8cc; font-size: 0.88rem; text-decoration: none; }
+    .contact-info a:hover { color: #d4a843; }
+
+    /* FOOTER */
+    footer { background-color: #0d0f14; border-top: 1px solid #252a38; padding: 2rem 2.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .footer-copy { color: #606070; font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 1.8rem; }
+    .footer-links a { color: #606070; font-size: 0.78rem; text-decoration: none; }
+    .footer-links a:hover { color: #a0a8c0; }
+
+
+    /* CONTACT FORM */
+    .cta-sec { background-color: #0d0f14; padding: 6rem 0; text-align: left; }
+    .cta-sec h2 { max-width: 100%; margin: 0.8rem 0 1.3rem; }
+    .cta-sec .sub { color: #b0b8cc; margin: 0 0 3rem; max-width: 100%; }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-form-wrap form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.78rem; font-weight: 600; color: #a0a8c0; text-transform: uppercase; letter-spacing: 0.1em; }
+    .form-group input,
+    .form-group textarea {
+      background-color: #111319;
+      border: 1px solid #252a38;
+      border-radius: 7px;
+      padding: 0.8rem 1rem;
+      color: #ffffff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #505570; }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: #d4a843; }
+
+    .btn-submit {
+      background-color: #d4a843;
+      color: #0d0f14;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      align-self: flex-start;
+      font-family: 'DM Sans', sans-serif;
+      transition: background-color 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background-color: #e8c05a; transform: translateY(-1px); }
+
+    .contact-info {
+      background-color: #111319;
+      border: 1px solid #252a38;
+      border-radius: 10px;
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid #252a38;
+    }
+    .contact-info-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-info-icon { font-size: 1.2rem; flex-shrink: 0; width: 32px; text-align: center; padding-top: 0.1rem; }
+    .contact-info strong { display: block; color: #ffffff; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .contact-info a, .contact-info span { color: #b0b8cc; font-size: 0.88rem; text-decoration: none; }
+    .contact-info a:hover { color: #d4a843; }
+
+    @media (max-width: 860px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .btn-submit { width: 100%; text-align: center; }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      header { padding: 1rem 1.4rem; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background-color: #0d0f14; border-bottom: 1px solid #252a38; padding: 1.2rem 1.4rem; gap: 1.1rem; }
+      .menu-toggle { display: flex; }
+
+      .hero { padding: 7.5rem 1.4rem 4rem; }
+      .sw { padding: 0 1.4rem; }
+
+      .stats-inner { grid-template-columns: 1fr 1fr; padding: 0 1.4rem; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-top: 1px solid #252a38; }
+
+      .problem-grid, .process-grid, .about-grid, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .why-box { position: static; }
+      .pillars { grid-template-columns: 1fr; }
+
+      footer { padding: 1.8rem 1.4rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  
+    /* ===== LIBRO ===== */
+    .book-hero { background-color:#0d0f14; padding:9rem 2.5rem 5rem; position:relative; overflow:hidden; }
+    .book-hero-inner { position:relative; max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.25fr 0.75fr; gap:4.5rem; align-items:center; }
+    .book-hero h1 { font-size:clamp(2.2rem,4.4vw,3.5rem); }
+    .book-cover-wrap { position:relative; justify-self:center; width:100%; max-width:330px; }
+    .book-cover { width:100%; height:auto; display:block; border-radius:4px 8px 8px 4px; border:1px solid #2b3144; box-shadow:0 30px 60px rgba(0,0,0,0.55), 0 0 90px rgba(212,168,67,0.12); }
+    .book-tag { position:absolute; top:-0.9rem; left:-0.9rem; background-color:#d4a843; color:#0d0f14; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.45rem 0.95rem; border-radius:100px; }
+    .book-sec { padding:6rem 0; background-color:#0d0f14; }
+    .book-sec.alt { background-color:#111319; border-top:1px solid #252a38; border-bottom:1px solid #252a38; }
+    .book-head { max-width:640px; margin-bottom:3rem; }
+    .book-head p { color:#b0b8cc; margin-top:0.9rem; }
+    .parts-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background-color:#252a38; border:1px solid #252a38; border-radius:10px; overflow:hidden; }
+    .part-card { background-color:#111319; padding:2rem 1.8rem; }
+    .part-card:hover { background-color:#161b27; }
+    .part-n { font-family:'Playfair Display',serif; font-size:0.8rem; font-weight:700; color:#d4a843; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.7rem; }
+    .part-card h3 { font-size:1.08rem; margin-bottom:0.8rem; }
+    .part-card ul { list-style:none; }
+    .part-card li { color:#b0b8cc; font-size:0.83rem; padding:0.25rem 0; display:flex; gap:0.55rem; }
+    .part-card li::before { content:'→'; color:#d4a843; flex-shrink:0; }
+    .method-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.4rem; }
+    .method-item { background-color:#111319; border:1px solid #252a38; border-radius:10px; padding:1.7rem 1.8rem; }
+    .alt .method-item { background-color:#0d0f14; }
+    .method-item strong { display:block; color:#ffffff; font-size:0.95rem; margin-bottom:0.35rem; }
+    .method-item p { color:#b0b8cc; font-size:0.86rem; }
+    .who-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:3rem; align-items:start; }
+    .who-list { list-style:none; }
+    .who-list li { display:flex; gap:0.7rem; color:#b0b8cc; font-size:0.93rem; padding:0.75rem 0; border-bottom:1px solid #252a38; }
+    .who-list li:last-child { border-bottom:none; }
+    .who-list li::before { content:'✓'; color:#d4a843; font-weight:700; flex-shrink:0; }
+    .not-box { background-color:#111319; border:1px solid #252a38; border-left:3px solid #d4a843; border-radius:10px; padding:1.8rem 2rem; }
+    .not-box h3 { font-size:1.05rem; }
+    .not-box p { color:#b0b8cc; font-size:0.88rem; margin-top:0.5rem; }
+    .avail-box { background-color:#111319; border:1px solid rgba(212,168,67,0.3); border-radius:12px; padding:3rem; display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; }
+    .avail-status { display:inline-flex; align-items:center; gap:0.55rem; background-color:rgba(212,168,67,0.12); border:1px solid rgba(212,168,67,0.3); color:#e8c05a; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:100px; margin-bottom:1.3rem; }
+    .avail-status::before { content:''; width:7px; height:7px; border-radius:50%; background-color:#d4a843; }
+    .avail-box p { color:#b0b8cc; font-size:0.93rem; margin-top:0.9rem; }
+    .avail-list { list-style:none; margin-top:1.2rem; }
+    .avail-list li { color:#e2ddd4; font-size:0.88rem; padding:0.3rem 0; display:flex; gap:0.6rem; }
+    .avail-list li::before { content:'✓'; color:#d4a843; font-weight:700; }
+    .consent { display:flex; gap:0.7rem; align-items:flex-start; font-size:0.78rem; color:#a0a8c0; line-height:1.5; }
+    .consent input { margin-top:0.2rem; accent-color:#d4a843; flex-shrink:0; }
+    .consent a { color:#e8c05a; }
+    .faq-item { border-bottom:1px solid #252a38; padding:1.4rem 0; }
+    .faq-item:first-child { border-top:1px solid #252a38; }
+    .faq-item strong { display:block; color:#ffffff; font-size:0.98rem; margin-bottom:0.4rem; }
+    .faq-item p { color:#b0b8cc; font-size:0.9rem; max-width:760px; }
+    .lab-band { background-color:rgba(212,168,67,0.07); border:1px solid rgba(212,168,67,0.22); border-radius:10px; padding:2rem 2.2rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .lab-band p { color:#b0b8cc; font-size:0.9rem; max-width:560px; margin-top:0.3rem; }
+    .lab-band strong { color:#ffffff; font-family:'Playfair Display',serif; font-size:1.15rem; }
+    .hp { position:absolute; left:-9999px; }
+    nav a.active { color:#ffffff; }
+    @media (max-width:860px) {
+      .book-hero { padding:7.5rem 1.4rem 4rem; }
+      .book-hero-inner { grid-template-columns:1fr; gap:3rem; }
+      .book-cover-wrap { order:-1; max-width:240px; }
+      .parts-grid, .method-grid, .who-grid, .avail-box { grid-template-columns:1fr; }
+      .avail-box { padding:2rem 1.5rem; gap:2rem; }
+      .book-sec { padding:4rem 0; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">Juanjo <span>Castellvi</span></a>
+  <nav id="nav">
+    <a href="/#servicios">Servicios</a>
+    <a href="/#proceso">Cómo trabajo</a>
+    <a href="/libro/" class="active">Libro</a>
+    <a href="/#sobre-mi">Sobre mí</a>
+    <a href="/#contacto">Contacto</a>
+    <a href="#aviso" class="nav-cta">Avísame del libro</a>
+  </nav>
+  <button class="menu-toggle" id="menuBtn" aria-label="Menú"><span></span><span></span><span></span></button>
+</header>
+
+<section class="book-hero" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-lines"></div>
+  <div class="book-hero-inner">
+    <div>
+      <div class="hero-badge">Próximamente en Amazon · Kindle y tapa blanda</div>
+      <h1>Revenue Management Hotelero<br/><em>Del primer KPI a la dirección de ingresos</em></h1>
+      <p class="hero-sub" style="max-width:560px;">Un manual práctico de 18 módulos para aprender a fijar precios, medir lo que importa y explicar tus decisiones. Con ejemplos de la vida diaria, ejercicios resueltos y laboratorios en línea.</p>
+      <div class="hero-btns">
+        <a href="#aviso" class="btn-gold">Avísame del lanzamiento →</a>
+        <a href="#contenido" class="btn-outline">Ver el contenido</a>
+      </div>
+    </div>
+    <div class="book-cover-wrap">
+      <div class="book-tag">Próximamente</div>
+      <img class="book-cover" src="/libro/portada.jpg" alt="Portada del libro Revenue Management Hotelero, de Juanjo Castellvi" width="640" height="1024" />
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">18</div><div class="stat-lbl">Módulos prácticos</div></div>
+    <div class="stat-item"><div class="stat-num">6</div><div class="stat-lbl">Partes, de cero a consultoría</div></div>
+    <div class="stat-item"><div class="stat-num">18</div><div class="stat-lbl">Laboratorios en línea</div></div>
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-lbl">Formatos: Kindle y tapa blanda</div></div>
+  </div>
+</div>
+
+<section class="book-sec" id="contenido">
+  <div class="sw">
+    <div class="book-head reveal">
+      <span class="sec-label">Contenido</span>
+      <h2>Seis partes para pasar de la teoría a decidir con datos</h2>
+      <p>Del primer indicador hasta saber plantear una auditoría. Cada módulo se puede leer por separado.</p>
+    </div>
+    <div class="parts-grid"><div class="part-card reveal"><div class="part-n">Parte I</div><h3>Fundamentos: entender el negocio</h3><ul><li>Economía y lógica del Revenue Management</li><li>Producto, inventario y economía unitaria</li><li>KPIs: medir correctamente</li></ul></div><div class="part-card reveal"><div class="part-n">Parte II</div><h3>Datos y mercado: saber dónde estás</h3><ul><li>Arquitectura de datos y calidad</li><li>Mercado, estacionalidad y comp set</li></ul></div><div class="part-card reveal"><div class="part-n">Parte III</div><h3>Demanda y precio</h3><ul><li>Segmentación y valor de la demanda</li><li>Previsión, pace y pickup</li><li>Pricing y arquitectura tarifaria</li><li>Estancia mínima, overbooking y grupos</li></ul></div><div class="part-card reveal"><div class="part-n">Parte IV</div><h3>Canales y rentabilidad</h3><ul><li>Distribución y coste de adquisición</li><li>Marketing directo y reputación</li><li>Ingreso total y rentabilidad</li></ul></div><div class="part-card reveal"><div class="part-n">Parte V</div><h3>Gestión y tecnología</h3><ul><li>Presupuesto, forecast y reunión de Revenue</li><li>Excel, BI y automatización</li><li>IA generativa y gobierno de datos</li></ul></div><div class="part-card reveal"><div class="part-n">Parte VI</div><h3>Del puesto a la consultoría</h3><ul><li>Auditoría y consultoría</li><li>Modelo de negocio de la consultoría</li><li>Proyecto final y defensa</li></ul></div></div>
+  </div>
+</section>
+
+<section class="book-sec alt" id="metodo">
+  <div class="sw">
+    <div class="book-head reveal">
+      <span class="sec-label">Cómo está hecho</span>
+      <h2>Se aprende practicando, no memorizando</h2>
+      <p>Una estructura que se repite en los 18 módulos para que avances sin perderte.</p>
+    </div>
+    <div class="method-grid"><div class="method-item reveal"><strong>De lo cotidiano al hotel</strong><p>Cada concepto empieza con una situación que ya conoces (una frutería, un avión, un coche), pasa al hotel y acaba en un cálculo que puedes repetir con tus datos.</p></div><div class="method-item reveal"><strong>Ejercicios con solución</strong><p>Cada módulo incluye un laboratorio con rúbrica de puntuación, cinco preguntas de autocomprobación y las soluciones al final del libro.</p></div><div class="method-item reveal"><strong>Un hotel de ejemplo</strong><p>Sigues el caso de un hotel independiente a lo largo de todo el libro. Los casos marcados como reales están anonimizados.</p></div><div class="method-item reveal"><strong>Laboratorios en línea</strong><p>Un código QR en cada módulo te lleva a un laboratorio en esta web con un texto listo para que tu propia IA corrija tu respuesta, y con espíritu crítico.</p></div><div class="method-item reveal"><strong>Resumen en 60 segundos</strong><p>Cada módulo termina con una síntesis de una página para repasar rápido antes de una reunión o de una entrevista.</p></div><div class="method-item reveal"><strong>Glosario y errores típicos</strong><p>Un glosario con los términos clave y, en cada módulo, los errores más habituales y cómo evitarlos.</p></div></div>
+  </div>
+</section>
+
+<section class="book-sec" id="para-quien">
+  <div class="sw">
+    <div class="who-grid">
+      <div class="reveal">
+        <span class="sec-label">Para quién es</span>
+        <h2>Si tomas decisiones de precio, o quieres tomarlas</h2>
+        <ul class="who-list" style="margin-top:1.6rem;">
+          <li>Personas de recepción, reservas, comercial o administración que quieren dar el salto a Revenue.</li>
+          <li>Propietarios y gerentes de hoteles independientes y alojamientos rurales.</li>
+          <li>Estudiantes de turismo y hostelería que buscan práctica real, no solo definiciones.</li>
+          <li>Futuros consultores que quieren una base sólida antes de ofrecer servicios a terceros.</li>
+        </ul>
+      </div>
+      <div class="not-box reveal">
+        <h3>Lo que no es este libro</h3>
+        <p>No es un manual de un programa concreto, ni una promesa de subir los ingresos un porcentaje fijo, ni una certificación oficial. Es un método de trabajo: los resultados dependen de tu hotel, de tu mercado y de la calidad de tus datos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="book-sec alt" id="aviso">
+  <div class="sw">
+    <div class="avail-box reveal">
+      <div>
+        <div class="avail-status">Próximamente en Amazon</div>
+        <h2>Entérate el día que salga</h2>
+        <p>El libro estará disponible en Amazon en versión Kindle y en tapa blanda. Deja tu correo y te escribiré una sola vez, cuando esté a la venta.</p>
+        <ul class="avail-list">
+          <li>Un único aviso, sin boletines</li>
+          <li>Puedes darte de baja cuando quieras</li>
+        </ul>
+      </div>
+      <div class="contact-form-wrap">
+        <form id="bookForm" action="https://formspree.io/f/mnjogvvp" method="POST">
+          <input type="hidden" name="_subject" value="Aviso lanzamiento libro" />
+          <input type="hidden" name="origen" value="web / libro (lista de aviso)" />
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="form-group"><label for="bnombre">Nombre (opcional)</label><input type="text" id="bnombre" name="nombre" placeholder="Tu nombre" /></div>
+          <div class="form-group"><label for="bemail">Correo electrónico</label><input type="email" id="bemail" name="email" placeholder="tu@email.com" required /></div>
+          <label class="consent"><input type="checkbox" name="consentimiento" value="si" required /><span>Acepto que Juanjo Castellvi use mi correo para avisarme del lanzamiento del libro. Más información en la <a href="https://www.juanjocastellvi.com/politica-de-privacidad-y-aviso-legal/">política de privacidad</a>.</span></label>
+          <button type="submit" class="btn-submit">Avísame →</button>
+          <div id="book-ok" style="display:none;color:#d4a843;font-weight:600;font-size:0.9rem;">¡Gracias! Te escribiré el día del lanzamiento.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="book-sec" id="laboratorios">
+  <div class="sw">
+    <div class="lab-band reveal">
+      <div><strong>¿Ya tienes el libro?</strong><p>Entra a los laboratorios en línea: elige el del módulo que estás estudiando y corrige tu respuesta con tu propia IA.</p></div>
+      <a href="/rm/" class="btn-outline">Ir a los laboratorios →</a>
+    </div>
+  </div>
+</section>
+
+<section class="book-sec alt" id="faq">
+  <div class="sw">
+    <div class="book-head reveal"><span class="sec-label">Preguntas frecuentes</span><h2>Lo que suelen preguntarme</h2></div>
+    <div class="faq-item reveal"><strong>¿Cuándo estará disponible?</strong><p>Está en la fase final de preparación. Se publicará en Amazon en versión Kindle y en tapa blanda. Si me dejas tu correo, te aviso el día que salga, sin enviarte nada más.</p></div><div class="faq-item reveal"><strong>¿Necesito conocimientos previos?</strong><p>No. Está pensado para empezar desde cero, sin economía previa ni Excel avanzado. Necesitas curiosidad y ganas de practicar.</p></div><div class="faq-item reveal"><strong>¿Es una certificación oficial?</strong><p>No. Es un manual de formación práctico. No otorga ninguna titulación ni acreditación reconocida por un organismo externo.</p></div><div class="faq-item reveal"><strong>¿Me garantiza subir los ingresos de mi alojamiento?</strong><p>No hay garantías honestas en eso: los resultados dependen de tu hotel, tu mercado y la calidad de tus datos. El libro te da un método para decidir mejor y comprobar el efecto.</p></div><div class="faq-item reveal"><strong>¿Cómo se ha elaborado el libro?</strong><p>Con asistencia de inteligencia artificial bajo mi dirección y responsabilidad editorial. Por eso el libro enseña también a usar la IA con criterio y a verificar siempre sus resultados.</p></div><div class="faq-item reveal"><strong>¿Y si prefiero que me lo apliquen a mi alojamiento?</strong><p>Para eso está mi servicio de consultoría: auditoría, reestructuración de precios, mejora del contenido en las plataformas y seguimiento mensual.</p></div>
+  </div>
+</section>
+
+<section class="cta-sec" id="contacto">
+  <div class="sw">
+    <div class="reveal" style="text-align:center;">
+      <span class="sec-label">Consultoría</span>
+      <h2 style="margin:0.8rem auto 1.2rem;max-width:720px;">¿Prefieres que lo apliquemos juntos a tu alojamiento?</h2>
+      <p class="sub" style="margin:0 auto 2rem;">El libro te enseña el método. Si quieres que lo ponga en marcha contigo, empezamos con un análisis gratuito.</p>
+      <a href="/#contacto" class="btn-gold">Solicitar análisis gratuito →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Juanjo Castellvi · Todos los derechos reservados</div>
+    <div class="footer-links">
+      <a href="https://www.juanjocastellvi.com/politica-de-privacidad-y-aviso-legal/">Política de privacidad</a>
+      <a href="mailto:juanjo@juanjocastellvi.com">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', function() { document.getElementById('nav').classList.toggle('open'); });
+  var bf = document.getElementById('bookForm');
+  bf.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = bf.querySelector('.btn-submit');
+    btn.textContent = 'Enviando...'; btn.disabled = true;
+    fetch(bf.action, { method:'POST', body:new FormData(bf), headers:{ 'Accept':'application/json' } })
+      .then(function(r) {
+        if (r.ok) { bf.reset(); document.getElementById('book-ok').style.display='block'; btn.textContent='✓ Enviado'; }
+        else { btn.textContent='Avísame →'; btn.disabled=false; alert('No se ha podido enviar. Escríbeme a juanjo@juanjocastellvi.com'); }
+      }).catch(function() { btn.textContent='Avísame →'; btn.disabled=false; alert('Error de conexión. Escríbeme a juanjo@juanjocastellvi.com'); });
+  });
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e, i) { if (e.isIntersecting) { setTimeout(function() { e.target.classList.add('visible'); }, i * 80); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+</script>
+</body>
+</html>

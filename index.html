@@ -412,6 +412,17 @@
       .btn-submit { width: 100%; text-align: center; }
     }
 
+
+    /* LIBRO (portada) */
+    .book-teaser { background-color:#0d0f14; padding:6rem 0; border-bottom:1px solid #252a38; }
+    .teaser-grid { display:grid; grid-template-columns:0.55fr 1.45fr; gap:4.5rem; align-items:center; }
+    .teaser-cover { width:100%; max-width:250px; height:auto; display:block; margin:0 auto; border-radius:3px 7px 7px 3px; border:1px solid #2b3144; box-shadow:0 24px 50px rgba(0,0,0,0.5), 0 0 70px rgba(212,168,67,0.1); }
+    .teaser-text p { color:#b0b8cc; font-size:0.97rem; margin:1rem 0 0; max-width:620px; }
+    .teaser-pills { display:flex; flex-wrap:wrap; gap:0.6rem; margin:1.6rem 0 2rem; }
+    .teaser-pills span { background-color:#111319; border:1px solid #252a38; color:#e2ddd4; font-size:0.78rem; padding:0.4rem 0.9rem; border-radius:100px; }
+    .teaser-status { display:inline-block; color:#e8c05a; font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.9rem; }
+    @media (max-width:860px) { .teaser-grid { grid-template-columns:1fr; gap:2.5rem; } .teaser-cover { max-width:200px; } .book-teaser { padding:4rem 0; } }
+
     /* REVEAL */
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -449,9 +460,10 @@
   <nav id="nav">
     <a href="javascript:void(0)" onclick="goTo('servicios')">Servicios</a>
     <a href="javascript:void(0)" onclick="goTo('proceso')">Cómo trabajo</a>
+    <a href="/libro/">Libro</a>
     <a href="javascript:void(0)" onclick="goTo('sobre-mi')">Sobre mí</a>
     <a href="javascript:void(0)" onclick="goTo('contacto')">Contacto</a>
-    <a href="/cdn-cgi/l/email-protection#b3d9c6d2ddd9dcf3d9c6d2ddd9dcd0d2c0c7d6dfdfc5da9dd0dcde" class="nav-cta">Análisis gratuito</a>
+    <a href="mailto:juanjo@juanjocastellvi.com" class="nav-cta">Análisis gratuito</a>
   </nav>
   <button class="menu-toggle" id="menuBtn" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -470,7 +482,7 @@
       Experiencia real en dirección hotelera aplicada a tu negocio.
     </p>
     <div class="hero-btns">
-      <a href="/cdn-cgi/l/email-protection#f39986929d999cb39986929d999c90928087969f9f859add909c9e" class="btn-gold">Solicitar análisis gratuito →</a>
+      <a href="mailto:juanjo@juanjocastellvi.com" class="btn-gold">Solicitar análisis gratuito →</a>
       <a href="javascript:void(0)" onclick="goTo('servicios')" class="btn-outline">Ver servicios</a>
     </div>
   </div>
@@ -583,6 +595,23 @@
   </div>
 </section>
 
+<!-- LIBRO -->
+<section class="book-teaser" id="libro">
+  <div class="sw">
+    <div class="teaser-grid">
+      <div class="reveal"><img class="teaser-cover" src="/libro/portada.jpg" alt="Portada del libro Revenue Management Hotelero, de Juanjo Castellvi" width="640" height="1024" /></div>
+      <div class="teaser-text reveal">
+        <span class="teaser-status">Próximamente en Amazon · Kindle y tapa blanda</span>
+        <h2>Revenue Management Hotelero</h2>
+        <p>Un manual práctico de 18 módulos para aprender a fijar precios, medir lo que importa y explicar tus decisiones, escrito para quien empieza desde cero. Con ejemplos de la vida diaria, ejercicios resueltos y laboratorios en línea.</p>
+        <div class="teaser-pills"><span>18 módulos</span><span>Ejercicios con solución</span><span>Laboratorios en línea</span><span>Sin conocimientos previos</span></div>
+        <a href="/libro/" class="btn-gold">Conocer el libro →</a>
+        <a href="/libro/#aviso" class="btn-outline" style="margin-left:0.6rem;">Avísame del lanzamiento</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESO -->
 <section class="process-sec" id="proceso">
   <div class="sw">
@@ -603,7 +632,7 @@
         <div class="diff"><strong>Experiencia hotelera real</strong><p>Conozco la operativa diaria de un alojamiento. He gestionado revenue en entornos vacacionales reales.</p></div>
         <div class="diff"><strong>Resultados medibles, no promesas</strong><p>Todo lo que propongo tiene una estimación de impacto económico concreto.</p></div>
         <div class="diff"><strong>Trato cercano y directo</strong><p>Sin presentaciones de 60 diapositivas. Vamos al grano y hablamos el mismo idioma.</p></div>
-        <a href="/cdn-cgi/l/email-protection#5b312e3a3531341b312e3a353134383a282f3e37372d3275383436" class="btn-gold" style="display:inline-flex;margin-top:2rem;">Empezar ahora →</a>
+        <a href="mailto:juanjo@juanjocastellvi.com" class="btn-gold" style="display:inline-flex;margin-top:2rem;">Empezar ahora →</a>
       </div>
     </div>
   </div>
@@ -685,7 +714,7 @@
             <div class="contact-info-icon">✉️</div>
             <div>
               <strong>Email</strong>
-              <a href="/cdn-cgi/l/email-protection#355f40545b5f5a755f40545b5f5a56544641505959435c1b565a58"><span class="__cf_email__" data-cfemail="4c26392d2226230c26392d2226232f2d3f382920203a25622f2321">[email&#160;protected]</span></a>
+              <a href="mailto:juanjo@juanjocastellvi.com">juanjo@juanjocastellvi.com</a>
             </div>
           </div>
           <div class="contact-info-item">
@@ -715,12 +744,12 @@
     <div class="footer-copy">© 2025 Juanjo Castellvi · Todos los derechos reservados</div>
     <div class="footer-links">
       <a href="https://www.juanjocastellvi.com/politica-de-privacidad-y-aviso-legal/">Política de privacidad</a>
-      <a href="/cdn-cgi/l/email-protection#83e9f6e2ede9ecc3e9f6e2ede9ece0e2f0f7e6efeff5eaade0ecee">Contacto</a>
+      <a href="mailto:juanjo@juanjocastellvi.com">Contacto</a>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Formspree AJAX
   var contactForm = document.getElementById('contactForm');
   if (contactForm) {
